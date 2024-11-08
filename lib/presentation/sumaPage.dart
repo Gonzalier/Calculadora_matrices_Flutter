@@ -17,119 +17,128 @@ class _sumaPageState extends State<sumaPage> {
   //final TextEditingController _controllerCol = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final MenuPageCubit cubit = context.read<MenuPageCubit>();
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Suma de matrices'),
-        backgroundColor: Colors.blueGrey[400],
-        foregroundColor: Colors.white,
-      ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 42, 136, 45),
-              Color.fromARGB(255, 147, 248, 199)
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-          ),
+    return BlocProvider(
+      create: (context) => MenuPageCubit(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Suma de matrices'),
+          backgroundColor: Colors.blueGrey[400],
+          foregroundColor: Colors.white,
         ),
-        child: Column(children: [
-          Container(
-            margin: const EdgeInsets.only(left: 15),
-            alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.only(top: 70),
-            child: const Text(
-              "Ingrese el tamaño de la matriz",
-              style: TextStyle(fontSize: 25),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 42, 136, 45),
+                Color.fromARGB(255, 147, 248, 199)
+              ],
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
             ),
           ),
-          Container(
-            padding: const EdgeInsets.only(right: 100, top: 50),
-            child: const Text(
-              "Para sumarse la matris deben tener el mismo tamaño",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          child: Column(children: [
+            Container(
+              margin: const EdgeInsets.only(left: 15),
+              alignment: Alignment.centerLeft,
+              padding: const EdgeInsets.only(top: 70),
+              child: const Text(
+                "Ingrese el tamaño de la matriz",
+                style: TextStyle(fontSize: 25),
+              ),
             ),
-          ),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              Column(
-                children: [
-                  const Text(
-                    "Filas",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Cell(
-                    onChanged: (value) {
-                      cubit.updateMatrizRow(value);
-                      print(value);
-                    },
-                  ),
-                ],
+            Container(
+              padding: const EdgeInsets.only(right: 100, top: 50),
+              child: const Text(
+                "Para sumarse la matris deben tener el mismo tamaño",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
-              const Column(
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "X",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  const Text(
-                    "Columnas",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Cell(
-                    onChanged: (value) {
-                      cubit.updateMatrizSize(row, col);
-                      print(value);
-                    },
-                  ),
-                ],
-              ),
-              const Column(
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
-              )
-            ],
-          ),
-          Column(
-            children: [
-              Container(
-                alignment: Alignment.bottomCenter,
-                height: MediaQuery.of(context).size.height / 4,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.white,
-                child: GridDrawer(row: cubit.,),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                alignment: Alignment.bottomCenter,
-                height: MediaQuery.of(context).size.height / 4,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.white,
-              ),
-              const SizedBox(height: 3),
-              FloatingActionButton(
-                heroTag: "GoSolution",
-                onPressed: () {},
-                child: Icon(Icons.arrow_circle_right_rounded),
-              )
-            ],
-          )
-        ]),
+            ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Column(
+                  children: [
+                    const Text(
+                      "Filas",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Cell(
+                      onChanged: (value) {
+                        context
+                            .read<MenuPageCubit>()
+                            .updateMatrizSize(row: value);
+                        print(value);
+                      },
+                    ),
+                  ],
+                ),
+                const Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "X",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    const Text(
+                      "Columnas",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Cell(
+                      onChanged: (value) {
+                        context
+                            .read<MenuPageCubit>()
+                            .updateMatrizSize(col: value);
+                        print(value);
+                      },
+                    ),
+                  ],
+                ),
+                const Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  height: MediaQuery.of(context).size.height / 4,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.white,
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  height: MediaQuery.of(context).size.height / 4,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.white,
+                ),
+                const SizedBox(height: 3),
+                FloatingActionButton(
+                  heroTag: "GoSolution",
+                  onPressed: () {
+                    print(
+                        "${context.read<MenuPageCubit>().state.CCol} ${context.read<MenuPageCubit>().state.CRow}");
+                  },
+                  child: Icon(Icons.arrow_circle_right_rounded),
+                )
+              ],
+            )
+          ]),
+        ),
       ),
     );
   }

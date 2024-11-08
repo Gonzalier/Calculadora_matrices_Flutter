@@ -5,9 +5,9 @@ import 'package:equatable/equatable.dart';
 part 'menu_page_cubit_state.dart';
 
 class MenuPageCubit extends Cubit<MenuPageCubitState> {
-  MenuPageCubit() : super(MenuPageCubitInitial());
+  MenuPageCubit() : super(MenuPageCubitState());
 
-  void updateMatrizSize(String row, String col) {
-    emit(MenuPageCubitUpdated(CRow: row, CCol: col));
+  void updateMatrizSize({String? row, String? col}) {
+    emit(state.copyWith(CCol: col, CRow: row));
   }
 }
