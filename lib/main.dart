@@ -1,3 +1,4 @@
+import 'package:calculadora_de_matrices_flutter/presentation/bloc/GridDrawerCubit/cubit/grid_drawer_cubit_cubit.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/bloc/menuPageCubit/menu_page_cubit_cubit.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/menuPage.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/sumaPage.dart';
@@ -9,6 +10,9 @@ void main() {
     MultiBlocProvider(providers: [
       BlocProvider(
         create: (context) => MenuPageCubit(),
+      ),
+      BlocProvider(
+        create: (context) => GridDrawerCubitCubit(),
       ),
     ], child: const MyApp()),
   );

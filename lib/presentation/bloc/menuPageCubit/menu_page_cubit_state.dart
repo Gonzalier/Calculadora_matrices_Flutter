@@ -4,15 +4,15 @@ class MenuPageCubitState extends Equatable {
   final String? CRow;
   final String? CCol;
 
-  const MenuPageCubitState({this.CRow, this.CCol});
+  const MenuPageCubitState({this.CRow = '3', this.CCol ='3'});
 
   MenuPageCubitState copyWith({
     String? CRow,
     String? CCol,
   }) {
     return MenuPageCubitState(
-      CRow: CRow ?? this.CRow,
-      CCol: CCol ?? this.CCol,
+      CRow: CRow ?? this.CRow ,
+      CCol: CCol ?? this.CCol ,
     );
   }
 
