@@ -16,5 +16,9 @@ class GridDrawerCubitCubit extends Cubit<GridDrawerCubitState> {
     print('bloc col${state.col}');
   }
 
+  void updateCellValue(int row, int col, String value) {
+    // Actualiza el estado con el nuevo valor de la celda
+    // Aquí deberías tener lógica para actualizar la matriz en el estado
+  }
 
 }

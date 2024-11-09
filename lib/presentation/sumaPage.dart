@@ -66,7 +66,6 @@ class _sumaPageState extends State<sumaPage> {
                   Cell(
                     onChanged: (value) {
                       context.read<GridDrawerCubitCubit>().setRow(value);
-                          
                     },
                   ),
                 ],
@@ -78,8 +77,7 @@ class _sumaPageState extends State<sumaPage> {
                   ),
                   Text(
                     "X",
-                    style:
-                        TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -112,7 +110,7 @@ class _sumaPageState extends State<sumaPage> {
                 alignment: Alignment.bottomCenter,
                 height: MediaQuery.of(context).size.height / 4,
                 width: MediaQuery.of(context).size.width,
-                color: Colors.white,
+                // color: Colors.white,
                 child: GridDrawer(),
               ),
               const SizedBox(height: 20),
@@ -120,7 +118,8 @@ class _sumaPageState extends State<sumaPage> {
                 alignment: Alignment.bottomCenter,
                 height: MediaQuery.of(context).size.height / 4,
                 width: MediaQuery.of(context).size.width,
-                color: Colors.white,
+                // color: Colors.white,
+                child: GridDrawer(),
               ),
               const SizedBox(height: 3),
               FloatingActionButton(

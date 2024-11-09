@@ -6,14 +6,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Cell extends StatefulWidget {
   final Function(String) onChanged;
-  Cell({super.key, required this.onChanged});
+  final TextEditingController? controller;
+
+  Cell({super.key, required this.onChanged, this.controller});
 
   @override
   State<Cell> createState() => _CellState();
 }
 
 class _CellState extends State<Cell> {
-  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,9 +29,9 @@ class _CellState extends State<Cell> {
         ),
         borderRadius: BorderRadius.circular(17),
       ),
-      child: TextField(
+      child: TextFormField(
         onChanged: widget.onChanged,
-        controller: controller,
+        controller: widget.controller,
         inputFormatters: [
           FilteringTextInputFormatter.digitsOnly,
         ],
