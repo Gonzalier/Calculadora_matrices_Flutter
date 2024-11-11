@@ -1,6 +1,6 @@
 import 'package:calculadora_de_matrices_flutter/models/Cell.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/bloc/GridDrawerCubit/cubit/grid_drawer_cubit_cubit.dart';
-import 'package:calculadora_de_matrices_flutter/presentation/bloc/menuPageCubit/menu_page_cubit_cubit.dart';
+import 'package:calculadora_de_matrices_flutter/presentation/pages/suma/sumaContent.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/utils/GridDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,8 +14,8 @@ class sumaPage extends StatefulWidget {
 }
 
 class _sumaPageState extends State<sumaPage> {
-  //final TextEditingController _controllerRow = TextEditingController();
-  //final TextEditingController _controllerCol = TextEditingController();
+  final GlobalKey<FormState> m1k = GlobalKey<FormState>();
+  final GlobalKey<FormState> m2k = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +111,10 @@ class _sumaPageState extends State<sumaPage> {
                 height: MediaQuery.of(context).size.height / 4,
                 width: MediaQuery.of(context).size.width,
                 // color: Colors.white,
-                child: GridDrawer(),
+                child: BlocProvider(
+                  create: (context) => GridDrawerCubitCubit(),
+                  child: GridDrawer(formKey: m1k),
+                ),
               ),
               const SizedBox(height: 20),
               Container(
@@ -119,7 +122,10 @@ class _sumaPageState extends State<sumaPage> {
                 height: MediaQuery.of(context).size.height / 4,
                 width: MediaQuery.of(context).size.width,
                 // color: Colors.white,
-                child: GridDrawer(),
+                child: BlocProvider(
+                  create: (context) => GridDrawerCubitCubit(),
+                  child: GridDrawer(formKey: m2k),
+                ),
               ),
               const SizedBox(height: 3),
               FloatingActionButton(

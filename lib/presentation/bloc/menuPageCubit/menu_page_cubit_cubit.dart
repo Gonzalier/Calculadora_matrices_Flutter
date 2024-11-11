@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:calculadora_de_matrices_flutter/models/Cell.dart';
 import 'package:equatable/equatable.dart';
 
 part 'menu_page_cubit_state.dart';

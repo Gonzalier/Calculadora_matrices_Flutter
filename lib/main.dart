@@ -1,7 +1,7 @@
 import 'package:calculadora_de_matrices_flutter/presentation/bloc/GridDrawerCubit/cubit/grid_drawer_cubit_cubit.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/bloc/menuPageCubit/menu_page_cubit_cubit.dart';
-import 'package:calculadora_de_matrices_flutter/presentation/menuPage.dart';
-import 'package:calculadora_de_matrices_flutter/presentation/sumaPage.dart';
+import 'package:calculadora_de_matrices_flutter/presentation/pages/menuPage.dart';
+import 'package:calculadora_de_matrices_flutter/presentation/pages/suma/sumaPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

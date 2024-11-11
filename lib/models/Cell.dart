@@ -1,14 +1,12 @@
-import 'package:calculadora_de_matrices_flutter/presentation/bloc/menuPageCubit/menu_page_cubit_cubit.dart';
-import 'package:calculadora_de_matrices_flutter/presentation/menuPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Cell extends StatefulWidget {
   final Function(String) onChanged;
   final TextEditingController? controller;
+  final Widget? child;
 
-  Cell({super.key, required this.onChanged, this.controller});
+  Cell({super.key, required this.onChanged, this.controller, this.child});
 
   @override
   State<Cell> createState() => _CellState();
