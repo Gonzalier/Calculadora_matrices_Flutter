@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class SumaContent extends StatelessWidget {
-  const SumaContent();
+   SumaContent({required this.m1, required this.m2});
+  List<List<String>?>? m1; List<List<String>?>? m2;
 
-  static List<List<String>?>? sumaMatrices(
-      List<List<String>?>? m1, List<List<String>?>? m2) {
+   List<List<String>?>? sumaMatrices(
+      List<List<String>?>? m1, List<List<String>?>? m2,) {
     List<List<String>?>? matrizResultado;
-    List<List<String>?>? matrizAux = m1;
+    List<List<String>?>? matrizAux = List.filled(m1!.length, List.filled(m1[].length, fill));
 
     for (int i = 0; i < m1!.length; i++) {
       for (int j = 0; j < m1[i]!.length; j++) {

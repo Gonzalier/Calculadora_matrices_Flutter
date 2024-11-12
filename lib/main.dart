@@ -1,21 +1,15 @@
 import 'package:calculadora_de_matrices_flutter/presentation/bloc/GridDrawerCubit/cubit/grid_drawer_cubit_cubit.dart';
-import 'package:calculadora_de_matrices_flutter/presentation/bloc/menuPageCubit/menu_page_cubit_cubit.dart';
+import 'package:calculadora_de_matrices_flutter/presentation/bloc/SumaPageCubit/suma_page_cubit_cubit.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/pages/menuPage.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/pages/suma/sumaPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(
-    MultiBlocProvider(providers: [
-      BlocProvider(
-        create: (context) => MenuPageCubit(),
-      ),
-      BlocProvider(
-        create: (context) => GridDrawerCubitCubit(),
-      ),
-    ], child: const MyApp()),
-  );
+  runApp(BlocProvider(
+    create: (context) => SumaPageCubit(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

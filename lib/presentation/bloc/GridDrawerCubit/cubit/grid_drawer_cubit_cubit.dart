@@ -13,6 +13,9 @@ class GridDrawerCubitCubit extends Cubit<GridDrawerCubitState> {
     emit(state.copyWith(col: col));
     print('bloc col${state.col}');
   }
+  void updateGridSize({String? row, String? col}) {
+    emit(state.copyWith(row: row, col: col));
+  }
 
   void SetCellValues(String row, String col, String value) {}
 

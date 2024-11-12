@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GridDrawer extends StatelessWidget {
-  GridDrawer({required this.formKey, this.child});
+  GridDrawer({required this.formKey});
   final GlobalKey<FormState> formKey;
 
-  Widget? child;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GridDrawerCubitCubit, GridDrawerCubitState>(

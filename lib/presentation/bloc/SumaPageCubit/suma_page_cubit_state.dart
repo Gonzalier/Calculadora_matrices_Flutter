@@ -1,20 +1,20 @@
-part of 'menu_page_cubit_cubit.dart';
+part of 'suma_page_cubit_cubit.dart';
 
-class MenuPageCubitState extends Equatable {
+class SumaPageCubitState extends Equatable {
   final String? CRow;
   final String? CCol;
 
-  const MenuPageCubitState({
+  const SumaPageCubitState({
     this.CRow = '3',
     this.CCol = '3',
   });
 
-  MenuPageCubitState copyWith({
+  SumaPageCubitState copyWith({
     String? CRow,
     String? CCol,
     final List<List<String>?>? matriz,
   }) {
-    return MenuPageCubitState(
+    return SumaPageCubitState(
       CRow: CRow ?? this.CRow,
       CCol: CCol ?? this.CCol,
     );

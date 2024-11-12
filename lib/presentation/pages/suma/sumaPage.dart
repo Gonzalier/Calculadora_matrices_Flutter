@@ -1,5 +1,7 @@
 import 'package:calculadora_de_matrices_flutter/models/Cell.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/bloc/GridDrawerCubit/cubit/grid_drawer_cubit_cubit.dart';
+import 'package:calculadora_de_matrices_flutter/presentation/bloc/SumaPageCubit/suma_page_cubit_cubit.dart';
+import 'package:calculadora_de_matrices_flutter/presentation/pages/menuPage.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/pages/suma/sumaContent.dart';
 import 'package:calculadora_de_matrices_flutter/presentation/utils/GridDrawer.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +67,9 @@ class _sumaPageState extends State<sumaPage> {
                   ),
                   Cell(
                     onChanged: (value) {
-                      context.read<GridDrawerCubitCubit>().setRow(value);
+                      context
+                          .read<SumaPageCubit>()
+                          .updateMatrizSize(row: value);
                     },
                   ),
                 ],
@@ -77,7 +81,8 @@ class _sumaPageState extends State<sumaPage> {
                   ),
                   Text(
                     "X",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -89,8 +94,9 @@ class _sumaPageState extends State<sumaPage> {
                   ),
                   Cell(
                     onChanged: (value) {
-                      context.read<GridDrawerCubitCubit>().setCol(value);
-                      print(value);
+                      context
+                          .read<SumaPageCubit>()
+                          .updateMatrizSize(col: value);
                     },
                   ),
                 ],
@@ -113,7 +119,16 @@ class _sumaPageState extends State<sumaPage> {
                 // color: Colors.white,
                 child: BlocProvider(
                   create: (context) => GridDrawerCubitCubit(),
-                  child: GridDrawer(formKey: m1k),
+                  child: BlocListener<SumaPageCubit, SumaPageCubitState>(
+                    listener: (context, state) {
+                      context
+                          .read<GridDrawerCubitCubit>()
+                          .updateGridSize(row: state.CRow, col: state.CCol);
+                    },
+                    child: GridDrawer(
+                      formKey: m1k,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -124,15 +139,22 @@ class _sumaPageState extends State<sumaPage> {
                 // color: Colors.white,
                 child: BlocProvider(
                   create: (context) => GridDrawerCubitCubit(),
-                  child: GridDrawer(formKey: m2k),
+                  child: BlocListener<SumaPageCubit, SumaPageCubitState>(
+                    listener: (context, state) {
+                      context
+                          .read<GridDrawerCubitCubit>()
+                          .updateGridSize(row: state.CRow, col: state.CCol);
+                    },
+                    child: GridDrawer(
+                      formKey: m2k,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 3),
               FloatingActionButton(
                 heroTag: "GoSolution",
                 onPressed: () {
-                  print(
-                      "${context.read<GridDrawerCubitCubit>().state.row} ${context.read<GridDrawerCubitCubit>().state.col}");
                 },
                 child: Icon(Icons.arrow_circle_right_rounded),
               )
